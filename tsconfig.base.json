@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@charbuild/affinity": ["libs/affinity/src/index.ts"]
+      "@charbuild/affinity": ["libs/affinity/src/index.ts"],
+      "@charbuild/attribute": ["libs/attribute/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

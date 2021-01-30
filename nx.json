@@ -18,6 +18,7 @@
   "projects": {
     "charbuild": { "tags": [] },
     "charbuild-e2e": { "tags": [], "implicitDependencies": ["charbuild"] },
-    "affinity": { "tags": [] }
+    "affinity": { "tags": [] },
+    "attribute": { "tags": [] }
   }
 }
