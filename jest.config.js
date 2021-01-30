@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/charbuild'],
+  projects: ['<rootDir>/apps/charbuild', '<rootDir>/libs/affinity'],
 };

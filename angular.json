@@ -114,6 +114,31 @@
           }
         }
       }
+    },
+    "affinity": {
+      "projectType": "library",
+      "root": "libs/affinity",
+      "sourceRoot": "libs/affinity/src",
+      "prefix": "charbuild",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/affinity/src/**/*.ts",
+              "libs/affinity/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/affinity"],
+          "options": {
+            "jestConfig": "libs/affinity/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
