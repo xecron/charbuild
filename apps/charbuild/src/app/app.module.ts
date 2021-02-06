@@ -5,10 +5,11 @@ import { AttributeModule } from '@charbuild/attribute';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AttributeModule, BrowserAnimationsModule],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, AttributeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
