@@ -20,7 +20,7 @@
               "apps/charbuild/src/favicon.ico",
               "apps/charbuild/src/assets"
             ],
-            "styles": ["apps/charbuild/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/charbuild/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
