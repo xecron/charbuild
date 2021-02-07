@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { MAT_DATE_LOCALE } from "@angular/material/core";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSliderModule } from "@angular/material/slider";
@@ -75,5 +75,6 @@ import { MatPaginatorModule } from "@angular/material/paginator";
         useValue: 'en-gb',
       },
     ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   })
   export class SharedModule {}
