@@ -8,7 +8,7 @@ import { MatSlider } from '@angular/material/slider';
 })
 export class AttributeSelectorComponent implements OnInit, AfterViewInit {
 
-  private maximumAttrPoints: number = 250;
+  public maximumAttrPoints: number = 250;
   
   public strength: number = 0;
   public agility: number = 0;
@@ -25,21 +25,31 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    console.log(this.strSlider)
-
     this.strSlider.registerOnChange(val => {
-      this.strength = val;
-      console.log(this.strength)
+      if (val > this.remainingStrPoints) {
+        this.strength = this.remainingStrPoints;
+        this.strSlider.value = this.remainingStrPoints;
+      } else {
+        this.strength = val;
+      }
     })
 
     this.agiSlider.registerOnChange(val => {
-      this.agility = val;
-      console.log(this.agility)
+      if (val > this.remainingAgiPoints) {
+        this.agility = this.remainingAgiPoints;
+        this.agiSlider.value = this.remainingAgiPoints;
+      } else {
+        this.agility = val;
+      }
     })
 
     this.intSlider.registerOnChange(val => {
-      this.intelligence = val;
-      console.log(this.intelligence)
+      if (val > this.remainingIntPoints) {
+        this.intelligence = this.remainingIntPoints;
+        this.intSlider.value = this.remainingIntPoints;
+      } else {
+        this.intelligence = val;
+      }
     })
   }
 
@@ -59,4 +69,13 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
     return this.maximumAttrPoints - (this.strength + this.agility + this.intelligence);
   }
 
+  resetPrimaryAttr(): void {
+    this.strength = 0;
+    this.agility = 0;
+    this.intelligence = 0;
+
+    this.strSlider.value = 0;
+    this.agiSlider.value = 0;
+    this.intSlider.value = 0;
+  }
 }

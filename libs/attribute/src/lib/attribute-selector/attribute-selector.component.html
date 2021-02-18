@@ -1,20 +1,36 @@
 <h1>Attribute Selection</h1>
+<p>There are two types of attribute. Primary and Secondary. Primary attributes are increasing your passive stats while affecting bonus modifier for your secondary attributes. 
+  If you have more strength then you will have bonus ratio on stamina points. if you have 2 as bonus ratio it means each secondary attribute points will counted as double.
+  <b>Strength</b>: will increase base physical damage.
+  <b>Agility</b>: will increase base attackspeed/castingspeed.
+  <b>Intelligence</b>: will increase base cost reduction.
+
+  Secondary attributes are giving certain passive bonuses.
+  <b>Stamina</b>: will increase base health.
+  <b>Speed</b>: will increase base movement speed.
+  <b>Willpower</b>: will increase crowd control resistance.
+</p>
+
 <p>Remaning Attr: {{ this.remainingAttrPoints }}</p>
 
 
-<div>
-  <label>Strenght: {{this.strength}}</label>
-  <mat-slider #strSlider thumbLabel min="0" [max]="this.remainingStrPoints"></mat-slider>
+<div class="attr-slider">
+  <label matTooltip="Increase : Stamina --- Decrease: Speed">Strenght: <b>{{this.strength}}</b></label>
+  <mat-slider #strSlider thumbLabel min="0" [max]="maximumAttrPoints"></mat-slider>
 </div>
 
-<div>
-  <label>Agility: {{this.agility}}</label>
-  <mat-slider #agiSlider thumbLabel min="0" [max]="this.remainingAgiPoints"></mat-slider>
+<div class="attr-slider">
+  <label matTooltip="Increase : Speed --- Decrease: Willpower">Agility: <b>{{this.agility}}</b></label>
+  <mat-slider #agiSlider thumbLabel min="0" [max]="maximumAttrPoints"></mat-slider>
 </div>
   
-<div>
-  <label>Intelligence: {{this.intelligence}}</label>
-  <mat-slider #intSlider thumbLabel min="0" [max]="this.remainingIntPoints"></mat-slider>
+<div class="attr-slider">
+  <label matTooltip="Increase : Willpower --- Decrease: Stamina">Intelligence: <b>{{this.intelligence}}</b></label>
+  <mat-slider #intSlider thumbLabel min="0" [max]="maximumAttrPoints"></mat-slider>
+</div>
+
+<div class="attr-slider">
+  <button mat-button (click)="resetPrimaryAttr()">Reset</button>
 </div>
   
 
