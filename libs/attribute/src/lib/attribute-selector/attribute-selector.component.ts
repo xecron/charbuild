@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { MatSlider } from '@angular/material/slider';
+import { MatTab } from '@angular/material/tabs';
 
 @Component({
   selector: 'charbuild-attribute-selector',
@@ -14,17 +15,24 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
   public agility: number = 0;
   public intelligence: number = 0;
 
+  public stamina: number = 0;
+  public speed: number = 0;
+  public willpower: number = 0;
 
   @ViewChild('strSlider') private strSlider: MatSlider;
   @ViewChild('agiSlider') private agiSlider: MatSlider;
   @ViewChild('intSlider') private intSlider: MatSlider;
+
+  @ViewChild('staminaSlider') private staminaSlider: MatSlider;
+  @ViewChild('speedSlider') private speedSlider: MatSlider;
+  @ViewChild('willpowerSlider') private willpowerSlider: MatSlider;
 
   constructor() { }
 
 
   ngOnInit(): void {}
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.strSlider.registerOnChange(val => {
       if (val > this.remainingStrPoints) {
         this.strength = this.remainingStrPoints;
@@ -51,6 +59,33 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
         this.intelligence = val;
       }
     })
+
+    this.staminaSlider.registerOnChange(val => {
+      if (val > this.remainingStaminaPoints) {
+        this.stamina = this.remainingStaminaPoints;
+        this.staminaSlider.value = this.remainingStaminaPoints;
+      } else {
+        this.stamina = val;
+      }
+    })
+
+    this.speedSlider.registerOnChange(val => {
+      if (val > this.remainingSpeedPoints) {
+        this.speed = this.remainingSpeedPoints;
+        this.speedSlider.value = this.remainingSpeedPoints;
+      } else {
+        this.speed = val;
+      }
+    })
+
+    this.willpowerSlider.registerOnChange(val => {
+      if (val > this.remainingWillpowerPoints) {
+        this.willpower = this.remainingWillpowerPoints;
+        this.willpowerSlider.value = this.remainingWillpowerPoints;
+      } else {
+        this.willpower = val;
+      }
+    })
   }
 
   get remainingStrPoints(): number {
@@ -65,8 +100,24 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
     return this.maximumAttrPoints - (this.strength + this.agility);
   }
 
-  get remainingAttrPoints(): number {
+  get remainingStaminaPoints(): number {
+    return this.maximumAttrPoints - (this.speed + this.willpower);
+  }
+
+  get remainingSpeedPoints(): number {
+    return this.maximumAttrPoints - (this.stamina + this.willpower);
+  }
+
+  get remainingWillpowerPoints(): number {
+    return this.maximumAttrPoints - (this.stamina + this.speed);
+  }
+
+  get remainingPrimaryAttrPoints(): number {
     return this.maximumAttrPoints - (this.strength + this.agility + this.intelligence);
+  }
+
+  get remainingSecondaryAttrPoints(): number {
+    return this.maximumAttrPoints - (this.stamina + this.speed + this.willpower);
   }
 
   resetPrimaryAttr(): void {
@@ -77,5 +128,17 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
     this.strSlider.value = 0;
     this.agiSlider.value = 0;
     this.intSlider.value = 0;
+
+    this.resetSecondaryAttr();
+  }
+
+  resetSecondaryAttr(): void {
+    this.stamina = 0;
+    this.speed = 0;
+    this.willpower = 0;
+
+    this.staminaSlider.value = 0;
+    this.speedSlider.value = 0;
+    this.willpowerSlider.value = 0;
   }
 }
