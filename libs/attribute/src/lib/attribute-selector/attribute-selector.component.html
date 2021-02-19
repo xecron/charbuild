@@ -15,8 +15,8 @@
 
 <br>
 
-<mat-tab-group mat-align-tabs="center" [(selectedIndex)]="selectedIndex">
-  <mat-tab label="Primary" [disabled]="this.selectedIndex === 2">
+<mat-tab-group mat-align-tabs="center" [(selectedIndex)]="selectedTabIndex">
+  <mat-tab label="Primary" [disabled]="this.selectedTabIndex === 2">
     <br>
     <p>Remaning Primary Attr: <b>{{ this.remainingPrimaryAttrPoints }}</b></p>
     <div class="attr-slider">
@@ -39,12 +39,12 @@
         <button mat-button (click)="resetPrimaryAttr()">Reset Primary</button>
       </div>
       <div class="attr-slider">
-        <button mat-button (click)="this.selectedIndex = 1" [disabled]="this.remainingPrimaryAttrPoints > 0">Next</button>
+        <button mat-button (click)="this.selectedTabIndex = 1" [disabled]="this.remainingPrimaryAttrPoints > 0">Next</button>
       </div>
     </div>
   </mat-tab>
 
-  <mat-tab label="Secondary" [disabled]="this.remainingPrimaryAttrPoints > 0 || this.selectedIndex === 2"> 
+  <mat-tab label="Secondary" [disabled]="this.remainingPrimaryAttrPoints > 0 || this.selectedTabIndex === 2"> 
     <br>
     <p>Remaning Secondary Attr: <b>{{this.remainingSecondaryAttrPoints}}</b></p>
     <div class="attr-slider">
@@ -64,13 +64,13 @@
 
     <div class="button-wrapper">
       <div class="attr-slider">
-        <button mat-button (click)="this.selectedIndex = 0">Prev</button>
+        <button mat-button (click)="this.selectedTabIndex = 0">Prev</button>
       </div>
       <div class="attr-slider">
         <button mat-button (click)="this.resetSecondaryAttr()">Reset Secondary</button>
       </div>
       <div class="attr-slider">
-        <button mat-button (click)="this.selectedIndex = 2" [disabled]="this.remainingSecondaryAttrPoints > 0">Next</button>
+        <button mat-button (click)="this.done()" [disabled]="this.remainingSecondaryAttrPoints > 0">Done</button>
       </div>
     </div>
   </mat-tab>
@@ -89,11 +89,11 @@
 
     <div class="button-wrapper">
       <div class="attr-slider" justifyContent="flex-start">
-        <button mat-button (click)="this.resetPrimaryAttr(); this.selectedIndex = 0">Reset</button>
+        <button mat-button (click)="this.resetPrimaryAttr(); this.selectedTabIndex = 0">Reset</button>
       </div>
-      <div class="attr-slider" justifyContent="flex-end">
+      <!-- <div class="attr-slider" justifyContent="flex-end">
         <button mat-button>Done</button>
-      </div>
+      </div> -->
     </div>
   
   </mat-tab>

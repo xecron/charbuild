@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSlider } from '@angular/material/slider';
-import { MatTab } from '@angular/material/tabs';
+import { AttributeService } from '../attribute.service';
 
 @Component({
   selector: 'charbuild-attribute-selector',
@@ -8,6 +8,8 @@ import { MatTab } from '@angular/material/tabs';
   styleUrls: ['./attribute-selector.component.scss']
 })
 export class AttributeSelectorComponent implements OnInit, AfterViewInit {
+
+  public selectedTabIndex: number = 0;
 
   public maximumAttrPoints: number = 250;
   
@@ -27,7 +29,7 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
   @ViewChild('speedSlider') private speedSlider: MatSlider;
   @ViewChild('willpowerSlider') private willpowerSlider: MatSlider;
 
-  constructor() { }
+  constructor(private attributeService: AttributeService) { }
 
 
   ngOnInit(): void {}
@@ -140,5 +142,20 @@ export class AttributeSelectorComponent implements OnInit, AfterViewInit {
     this.staminaSlider.value = 0;
     this.speedSlider.value = 0;
     this.willpowerSlider.value = 0;
+  }
+
+  done(): void {
+    this.attributeService.setStr(this.strength);
+    this.attributeService.setAgi(this.agility);
+    this.attributeService.setInt(this.intelligence);
+    this.attributeService.setStamina(this.stamina);
+    this.attributeService.setSpeed(this.speed);
+    this.attributeService.setWillpower(this.willpower);
+
+    this.stamina = this.attributeService.stamina.getValue();
+    this.speed = this.attributeService.speed.getValue();
+    this.willpower = this.attributeService.willpower.getValue();
+
+    this.selectedTabIndex = 2;
   }
 }

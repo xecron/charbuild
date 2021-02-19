@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { bufferCount, take, takeLast } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -72,5 +71,6 @@ Strength = Stamina ++ /  -- Speed
       return Math.round(newValue);
     }
   }
+
 }
  
