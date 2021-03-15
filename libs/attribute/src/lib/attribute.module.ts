@@ -1,12 +1,11 @@
-import { SharedModule } from './../../../../apps/charbuild/src/app/shared.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '@charbuild/shared';
 
 import { AttributeService } from './attribute.service';
 import { AttributeSelectorComponent } from './attribute-selector/attribute-selector.component';
 
 @NgModule({
-  imports: [CommonModule, SharedModule],
+  imports: [SharedModule],
   providers: [AttributeService],
   declarations: [AttributeSelectorComponent],
   exports: [AttributeSelectorComponent],

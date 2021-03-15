@@ -1,52 +1,20 @@
 import { NgModule } from '@angular/core';
+import { PreloadAllModules } from '@angular/router';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes = [
     {
       path: '',
-      component: AppComponent,
-    //   children: [
-    //     {
-    //       path: '',
-    //       loadChildren: () => import('./+dashboard/dashboard.module').then((m) => m.DashboardModule),
-    //     },
-    //     {
-    //       path: 'billing',
-    //       loadChildren: () => import('./+billing/billing.module').then((m) => m.BillingModule),
-    //     },
-    //     {
-    //       path: 'promo-areas',
-    //       loadChildren: () => import('./+promo-area/promo-area.module').then((m) => m.PromoAreaModule),
-    //     },
-    //     {
-    //       path: 'settings',
-    //       loadChildren: () => import('./+setting/setting.module').then((m) => m.SettingModule),
-    //     },
-    //     {
-    //       path: 'redirect',
-    //       loadChildren: () => import('./+redirect/redirect.module').then((m) => m.RedirectModule),
-    //     },
-    //     {
-    //       path: 'v2',
-    //       children: [
-    //         {
-    //           path: 'restaurants',
-    //           loadChildren: () => import('./+vendor/vendor.module').then((m) => m.VendorModule),
-    //         },
-    //         {
-    //           path: 'bookings',
-    //           loadChildren: () => import('./+booking_v2/booking.module').then((m) => m.BookingV2Module),
-    //         },
-    //       ],
-    //     },
-    //   ],
+      component: HomeComponent,
+      children: [
+        {
+          path: 'attribute',
+          loadChildren: () => import('@charbuild/attribute').then((m) => m.AttributeModule),
+        },
+      ],
     },
-    // {
-    //   path: 'root',
-    //   component: RootComponent,
-    // },
     {
       path: '**',
       redirectTo: '',
@@ -55,7 +23,9 @@ export const routes = [
   ];
   
   @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+    })],
     exports: [RouterModule],
   })
   export class AppRoutingModule {}
