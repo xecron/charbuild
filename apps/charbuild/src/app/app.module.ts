@@ -11,10 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { CreationComponent } from './creation/creation.component';
 import { CraftingComponent } from './crafting/crafting.component';
+import { BuildsComponent } from './builds/builds.component';
 
 @NgModule({
   imports: [BrowserModule, SharedModule, AppRoutingModule, BrowserAnimationsModule, AttributeModule],
-  declarations: [AppComponent, HomeComponent, CreationComponent, CraftingComponent],
+  declarations: [AppComponent, HomeComponent, CreationComponent, CraftingComponent, BuildsComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
