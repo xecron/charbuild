@@ -3,21 +3,21 @@ import { PreloadAllModules } from '@angular/router';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { CreationComponent } from './creation/creation.component';
+
 
 export const routes = [
     {
-      path: '',
+      path: 'home',
       component: HomeComponent,
-      children: [
-        {
-          path: 'attribute',
-          loadChildren: () => import('@charbuild/attribute').then((m) => m.AttributeModule),
-        },
-      ],
+    },
+    {
+      path: 'creation',
+      component: CreationComponent,
     },
     {
       path: '**',
-      redirectTo: '',
+      redirectTo: 'home',
       pathMatch: 'full',
     },
   ];

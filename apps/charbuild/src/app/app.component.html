@@ -1,5 +1,12 @@
 <header class="flex">
-  <h1>Welcome to {{ title }}!</h1>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <nav>
+        <a mat-button class="button" routerLink="/home" routerLinkActive="activebutton"> Home</a>
+        <a mat-button class="button" routerLink="/creation" routerLinkActive="activebutton"> Character Creation</a>
+      </nav>
+    </mat-toolbar-row>
+  </mat-toolbar>
 </header>
 <main>
   <router-outlet></router-outlet>
