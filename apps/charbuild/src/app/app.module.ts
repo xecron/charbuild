@@ -10,10 +10,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { CreationComponent } from './creation/creation.component';
+import { CraftingComponent } from './crafting/crafting.component';
 
 @NgModule({
   imports: [BrowserModule, SharedModule, AppRoutingModule, BrowserAnimationsModule, AttributeModule],
-  declarations: [AppComponent, HomeComponent, CreationComponent],
+  declarations: [AppComponent, HomeComponent, CreationComponent, CraftingComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
