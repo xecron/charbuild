@@ -17,7 +17,8 @@
     "paths": {
       "@charbuild/affinity": ["libs/affinity/src/index.ts"],
       "@charbuild/attribute": ["libs/attribute/src/index.ts"],
-      "@charbuild/shared": ["libs/shared/src/index.ts"]
+      "@charbuild/shared": ["libs/shared/src/index.ts"],
+      "@charbuild/ancestor": ["libs/ancestor/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
